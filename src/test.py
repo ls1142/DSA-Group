@@ -23,12 +23,24 @@ def standarddevations(data: list, mean: float):
     return sqrt(unsquarerootedSD)
 
 
+def generateData():
+    z = 10
+    data = []
+    for i in range(0, random.randint(0,z)):
+        data.append([])
+    for i in range(0, len(data)):
+        for j in range(0, random.randint(0,z*z)):
+            data[i].append(random.randint(0,len(data)))
+    return data
+
+
 def test(testLength: int = 100):
     """Runs a test on the data, outputs and returns mean and standard deviation"""
-    data = []
+    
+    data = generateData()
     for i in range(0,testLength):
         randomData = []
-        data.append(algorithm(randomData))
+        data.append(algorithm(randomData, []))
 
     mean = means(data)
     sd = standarddevations(data, mean)
@@ -37,5 +49,5 @@ def test(testLength: int = 100):
     return mean,sd
 
 
-if __main__ == "__name__":
+if __name__ == "__main__":
     test()
