@@ -35,3 +35,7 @@ def test(testLength: int = 100):
     print(f"average:{str(mean)}")
     print(f"standardDevation:{str(sd)}")
     return mean,sd
+
+
+if __main__ == "__name__":
+    test()
