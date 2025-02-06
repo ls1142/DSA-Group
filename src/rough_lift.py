@@ -19,6 +19,7 @@ floors = [ground_floor, floor1, floor2, floor3]  # list of floors,STK
 lift = []  # lift starts empty,STK
 
 def scan_alg(floors,lift):
+    start_time = time.time()
     # what the floor are before we process tge requests,STK
     print("Floors before lift:")  
     for idx, floor in enumerate(floors):  
@@ -59,5 +60,11 @@ def scan_alg(floors,lift):
     print("\nFloors after lift:") 
     for idx, floor in enumerate(floors): 
         print(f"Floor {idx}: {floor}")  
+    
+    end_time = time.time()
+    time_difrence = (f"\nExecution time: {end_time - start_time:.6f} seconds")
+    return time_difrence
 
 
+
+scan_alg(floors,lift)
