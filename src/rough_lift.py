@@ -62,7 +62,7 @@ def scan_alg(floors,lift):
         print(f"Floor {idx}: {floor}")  
     
     end_time = time.time()
-    time_difrence = (f"\nExecution time: {end_time - start_time:.6f} seconds")
+    time_difrence = (end_time - start_time)*1000
     return time_difrence
 
 

@@ -37,11 +37,14 @@ def generateData():
 def test(testLength: int = 100):
     """Runs a test on the data, outputs and returns mean and standard deviation"""
     
-    data = generateData()
+    data = []
+    randomData = generateData()
     for i in range(0,testLength):
         randomData = []
         data.append(algorithm(randomData, []))
 
+
+    print(data)
     mean = means(data)
     sd = standarddevations(data, mean)
     print(f"average:{str(mean)}")
@@ -50,4 +53,4 @@ def test(testLength: int = 100):
 
 
 if __name__ == "__main__":
-    test()
+    test(100_000)
