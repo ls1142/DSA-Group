@@ -1,9 +1,9 @@
-from rough_lift import Scan
+from rough_lift import scan_alg
 import random
 from math import sqrt
 
 
-algorithm = Scan
+algorithm = scan_alg
 
 
 def means(data: list):
