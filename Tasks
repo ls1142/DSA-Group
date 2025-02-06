@@ -1,37 +1,25 @@
-Group Project Tasks: 
 
- 
-
-Finish SCAN algorithm: SAM
-
- 
-
-Documentation e.g projects scope: SAM
-
- 
-
-LOOK algorithm (Multiple people): Will
-
- 
-
-Testing: Will
-
- 
-
-GUI development: TED  
-
- 
-
-Report Writting:  
-
- 
-
- 
-
-Video Presentation: 
 
 Everyone has to be in it I think  
 
 TED Said he will do the editing  
 
+
+Task	Description	Recommended Perso
+Specification Document	Writing the coursework specification, including requirements, objectives, assumptions, pseudocode, Generative AI statement, and system design.Sam, spell check + grammer Ted
+
+Report Writting Will
+
+Algorithm Implementation (SCAN, LOOK, MYLIFT)	Implementing at least two algorithms + one custom algorithm for optimization.	Sam(Scan),(Ted + Will(look)) + louis(our algoryhtm of choice)
+
+
+Simulation & Testing	Designing scenarios, constraints (lift capacity, travel time), running simulations, collecting data.	Will
+
+
+Results & Analysis	Generating charts/graphs, comparing algorithm efficiency, interpreting results.	1 person
+
+
+Video Presentation	Creating slides, recording, and editing the video presentation (all members participate).	Ted as lead, all contribute
+
+Final Documentation & Submission	Compiling final PDF, structuring folders, writing README, ensuring all files are included.	1 person (final review & submission)
  
