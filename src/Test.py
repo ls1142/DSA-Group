@@ -1,4 +1,4 @@
-from rough_lift import scan_alg
+from Scan import scan_alg
 import random
 from math import sqrt
 import matplotlib.pyplot as plt
@@ -6,10 +6,8 @@ import numpy as np
 
 
 
-algorithm = scan_alg
 
-
-def means(data: list):
+def means(data: list) -> float:
     """calculates the mean of a dataset"""
     s = 0
     for i in range(0, len(data)):
@@ -17,7 +15,7 @@ def means(data: list):
     return s/len(data)
 
 
-def standarddevations(data: list, mean: float):
+def standarddevations(data: list, mean: float) -> float:
     """calculates the standard devation of a dataset with mean 'mean'"""
     s = 0
     for i in range(0, len(data)):
@@ -26,7 +24,24 @@ def standarddevations(data: list, mean: float):
     return sqrt(unsquarerootedSD)
 
 
-def generateData(floors,people):
+
+def generateFileData(floors:int,people:int)->None:
+    data = generateData(floors, people)
+    
+    string = str(floors)+",1\n"
+    for i in range(1,floors+1):
+        string = string + "\n" + str(i) + ":"
+        for j in range(0,len(data[i-1])):
+            if j != len(data[i-1])-1:
+                string = string + str(data[i-1][j])+","
+            else:
+                string = string + str(data[i-1][j])
+    
+    with open("input.txt", "w") as file:
+        file.write(string)
+
+
+def generateData(floors:int,people:int) -> list:
     data = []
     for i in range(0, floors):
         data.append([])
@@ -35,7 +50,7 @@ def generateData(floors,people):
         data[random.randint(0,floors-1)].append(random.randint(0,floors-1))
     return data
 
-def generatePD(data: list, disc: int):
+def generatePD(data: list, disc: int) -> list:
     s = 0; e = 5
     pd = []
     for i in range(0,disc):
@@ -49,13 +64,13 @@ def generatePD(data: list, disc: int):
     return pd
 
 
-def test(testLength: int = 100, testFlors: int = 10, testPeople: int = 10):
+def test(testLength: int = 100, testFlors: int = 10, testPeople: int = 10, algorithm: callable = None):
     """Runs a test on the data, outputs and returns mean and standard deviation"""
     
     data = []
     for i in range(0,testLength):
         randomData = generateData(testFlors,testPeople)
-        data.append(algorithm(randomData, []))
+        data.append(algorithm(randomData, [], 1))
 
 
     #print(data)
@@ -78,19 +93,22 @@ if __name__ == "__main__":
     FLOORS = 100
     PEOPLE = 10000
     
+    generateFileData(10,10)
     
-    mean, sd, pd = test(SAMPLES,FLOORS,PEOPLE)
-    mean2, sd2, pd2 = test(round(SAMPLES/5),FLOORS,round(PEOPLE/10))
+    
+    
+    mean, sd, pd = test(SAMPLES,FLOORS,PEOPLE,scan_alg)
+    #mean2, sd2, pd2 = test(round(SAMPLES/5),FLOORS,round(PEOPLE/10))
     x = np.arange(0,5,0.001)
     f = 1/sqrt(2*3.14159265359)*np.exp((-1/2)*((x-mean)/sd)**2)
-    f2 = 1/sqrt(2*3.14159265359)*np.exp((-1/2)*((x-mean2)/sd2)**2)
+    #f2 = 1/sqrt(2*3.14159265359)*np.exp((-1/2)*((x-mean2)/sd2)**2)
     g = np.array(pd)
     #g2 = np.array(pd2)
 
     fig, ax = plt.subplots()
     
     
-    ax.plot(x,g,color='red',alpha=1.0)
+    #ax.plot(x,g,color='red',alpha=1.0)
     #ax.plot(x,g2,color='green',alpha=1.0)
     
     
