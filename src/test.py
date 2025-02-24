@@ -1,6 +1,9 @@
 from rough_lift import scan_alg
 import random
 from math import sqrt
+import matplotlib.pyplot as plt
+import numpy as np
+
 
 
 algorithm = scan_alg
@@ -23,34 +26,81 @@ def standarddevations(data: list, mean: float):
     return sqrt(unsquarerootedSD)
 
 
-def generateData():
-    z = 10
+def generateData(floors,people):
     data = []
-    for i in range(0, random.randint(0,z)):
+    for i in range(0, floors):
         data.append([])
-    for i in range(0, len(data)):
-        for j in range(0, random.randint(0,z*z)):
-            data[i].append(random.randint(0,len(data)))
+        
+    for i in range(0,people):
+        data[random.randint(0,floors-1)].append(random.randint(0,floors-1))
     return data
 
+def generatePD(data: list, disc: int):
+    s = 0; e = 5
+    pd = []
+    for i in range(0,disc):
+        pd.append(0)
+        
+    lend = len(data)
+    for i in range(0,len(data)):
+        for j in range(1,disc):
+            if data[i]<=(e-s)/disc*(j+1) and data[i]>(e-s)/disc*(j):
+                pd[j]+=(1)/lend
+    return pd
 
-def test(testLength: int = 100):
+
+def test(testLength: int = 100, testFlors: int = 10, testPeople: int = 10):
     """Runs a test on the data, outputs and returns mean and standard deviation"""
     
     data = []
-    randomData = generateData()
     for i in range(0,testLength):
-        randomData = []
+        randomData = generateData(testFlors,testPeople)
         data.append(algorithm(randomData, []))
 
 
-    print(data)
+    #print(data)
     mean = means(data)
     sd = standarddevations(data, mean)
     print(f"average:{str(mean)}")
-    print(f"standardDevation:{str(sd)}")
-    return mean,sd
+    print(f"standardDevation:{str(sd)}") 
+    pd = generatePD(data, 20)
+    
+    pdz = []
+    for i in range(0, 20):
+        for j in range(0,round(5000/20)):
+            pdz.append(pd[i])
+    
+    return mean,sd,pdz
 
 
 if __name__ == "__main__":
-    test(100_000)
+    SAMPLES = 500
+    FLOORS = 100
+    PEOPLE = 10000
+    
+    
+    mean, sd, pd = test(SAMPLES,FLOORS,PEOPLE)
+    mean2, sd2, pd2 = test(round(SAMPLES/5),FLOORS,round(PEOPLE/10))
+    x = np.arange(0,5,0.001)
+    f = 1/sqrt(2*3.14159265359)*np.exp((-1/2)*((x-mean)/sd)**2)
+    f2 = 1/sqrt(2*3.14159265359)*np.exp((-1/2)*((x-mean2)/sd2)**2)
+    g = np.array(pd)
+    #g2 = np.array(pd2)
+
+    fig, ax = plt.subplots()
+    
+    
+    ax.plot(x,g,color='red',alpha=1.0)
+    #ax.plot(x,g2,color='green',alpha=1.0)
+    
+    
+    ax.plot(x,f,color='red',alpha=1.00,label="Scan")
+    #ax.plot(x,f2,color='green',alpha=1.00,label="Look(but not really)")
+    ax.fill_between(x,f,0,color='red',alpha=0.1)
+    #ax.fill_between(x,f2,0,color='green',alpha=0.1)
+    plt.ylabel("Probability Density")
+    plt.xlabel("Time(s)")
+    plt.legend()
+    plt.suptitle(f"Normal Distributions of Each Algorithm",fontsize=14, fontweight='bold')
+    plt.title(f'{SAMPLES} samples per algorithm with {FLOORS} floors and {PEOPLE} people.',fontsize="8")
+    plt.show()
