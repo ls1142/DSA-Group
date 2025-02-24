@@ -175,13 +175,11 @@ def downLift(lift, all_requests, current_floor, completed, Up):
         return lift, all_requests, current_floor, completed, Up
     else: return lift, all_requests, current_floor, completed, Up
 
-n = 0
+def Lift(lift, all_requests, current_floor, completed, Up):
+    while completed == False:
+        if Up == True:
+            lift, all_requests, current_floor, completed, Up = upLift(lift, all_requests, current_floor, completed, Up)
+        elif Up == False:
+            lift, all_requests, current_floor, completed, Up = downLift(lift, all_requests, current_floor, completed, Up)
 
-while completed == False:
-    if n == 100:
-        completed = True
-    n += 1
-    if Up == True:
-        lift, all_requests, current_floor, completed, Up = upLift(lift, all_requests, current_floor, completed, Up)
-    elif Up == False:
-        lift, all_requests, current_floor, completed, Up = downLift(lift, all_requests, current_floor, completed, Up)
+Lift(lift, all_requests, current_floor, completed, Up)
