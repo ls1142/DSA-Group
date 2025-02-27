@@ -1,6 +1,6 @@
+import time #we are going to track exacution time 
 
-
-all_requests = []
+all_requests = []# used to store floor requests 
 
 def making_list_of_requests(list_type_of_requests):
     temp_list = []
@@ -41,7 +41,7 @@ with open("input.txt", "r") as file:
             except ValueError:
                 print(f"Skipping invalid line: {line.strip()}")
 
-# Display output
+# display output
 print(f"Floors: {top_floor}, Capacity: {capacity}")
 print(f"All requests: {all_requests}")
 
@@ -52,70 +52,70 @@ floors = all_requests
 lift = []  # lift starts empty
 
 def scan_alg(floors, lift, max_capacity):
+    start_time = time.time()
     
-    
-    print("Floors before lift:")  
+    print("Floors before lift:")  #print what the floors look before algorithm exacutuion
     for idx, floor in enumerate(floors):  
         print(f"Floor {idx}: {floor}")  
 
-    # Lift going up
+    # lift going up
     for floor_count in range(len(floors)):  
         print(f"\nProcessing floor {floor_count}...")
 
-        # Drop off passengers who requested this floor
+        # drop off passengers who requested this floor
         for person in lift[:]:  
             if person == floor_count:
                 lift.remove(person)  
                 print(f"Dropped off passenger {person} at floor {floor_count}")
 
-        # Pick up passengers if there's space in the lift
+        # pick up passengers if there's space in the lift
         while floors[floor_count] and len(lift) < max_capacity:
-            person = floors[floor_count].pop(0)  
-            lift.append(person)  
-            print(f"Picked up passenger {person} from floor {floor_count}")
+            person = floors[floor_count].pop(0) #pop takes them off there floor,0 means we take first so it works as a queue 
+            lift.append(person)  #append adds them to lift
+            print(f"Picked up passenger {person} from floor {floor_count}")#shows us who was picked up from where,helps with trackinh movement for de bigging
             
 
-        # If lift reaches max capacity, drop everyone off
+        # if lift reaches max capacity, drop everyone off
         if len(lift) == max_capacity:
             print(f"Lift reached max capacity at floor {floor_count}, dropping everyone off!")
-            for person in lift[:]:
-                lift.remove(person)
-                floors[person].append(person)
-                print(f"Dropped off passenger {person} at floor {person}")
+            for person in lift[:]:#copy of lift
+                lift.remove(person)#remove them 
+                floors[person].append(person)#add to floor
+                print(f"Dropped off passenger {person} at floor {person}")#shows whos dropped of where to keep track for debugging
             print(f"Floors after dropping off at max capacity: {floors}")
 
-        # Recheck if there's any pending passengers on this floor
+        # recheck if theres passengers on this floor
         if floors[floor_count]:
             print(f"Pending requests on floor {floor_count}: {floors[floor_count]}")
 
-    # If there are still passengers in the lift, drop them off
+    # if there are still passengers in the lift drop them off
     if len(lift) > 0:
         print(f"\nRemaining passengers in the lift, continuing to drop them off: {lift}")
 
-    # Lift going down (recheck the remaining passengers)
-    for floor_count in range(len(floors) - 1, -1, -1):  
-        print(f"\nProcessing floor {floor_count} during descent...")
+    # start down wards journey 
+    for floor_count in range(len(floors) - 1, -1, -1):  #looping from highest floor
+        print(f"\nProcessing floor {floor_count} during descent...")#show what floor is being processed
 
-        # Drop off passengers who requested this floor
-        for person in lift[:]:  
-            if person == floor_count:
-                lift.remove(person)
-                # Add the dropped off person back to their floor so they appear in final output
+        # drop off passengers who requested this floor
+        for person in lift[:]:  #using copy to not mess with origonal 
+            if person == floor_count:#xheck request for right floor
+                lift.remove(person)#take from lif
+                # add the dropped off person back to their floor 
                 floors[floor_count].append(person)
                 print(f"Dropped off passenger {person} at floor {floor_count}")
 
     # pick up  if there's space in the lift 
-        i = 0
+        i = 0 #set i to 0 for going theough floor to check people waiitimgh , tallow checks to stop re picking up on way back down 
         while i < len(floors[floor_count]) and len(lift) < max_capacity:
             # check if this person wants to go to a different floor,to stop lift picking people back up on way down 
             if floors[floor_count][i] != floor_count:  
-                person = floors[floor_count].pop(i)  
-                lift.append(person)  
+                person = floors[floor_count].pop(i)  #take off floor
+                lift.append(person)  #add to list 
                 print(f"Picked up passenger {person} from floor {floor_count} during descent")
             else:
-                # Skip this person as they want to go to the current floor, this stops the re picking up 
+                # skip this person as they want to go to the current floor this stops the re picking up 
                 print(f"Skipping passenger {floors[floor_count][i]} as they want to go to the current floor")
-                i += 1
+                i += 1#increase for 1
 
         # check for pending requests again as we descend
         if floors[floor_count]:
@@ -125,7 +125,10 @@ def scan_alg(floors, lift, max_capacity):
     for idx, floor in enumerate(floors): 
         print(f"Floor {idx}: {floor}")  
     
+    end_time = time.time()
+    
    
+    return (end_time - start_time) * 1000
     
    
 
