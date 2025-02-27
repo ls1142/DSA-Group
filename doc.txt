@@ -5,7 +5,7 @@ Module: ECM 1414
  
 Group Members and Student IDs: 
 Sam Taylor-King 740026903 
-Qi Feng Wu 740065063
+ 
  
  
  
@@ -49,7 +49,7 @@ Lift scheduling has important real-world applications, efficient algorithms must
 
  
 
-Purpose of Project: We are aiming to create an efficient lift system which can deal with multiple users requests in queues and implement priorities weight limits and handle edge cases whilst delivering the intended service for users. 
+Purpose of Project: We are aiming to create an efficient lift system which can deal with multiple users requests in queues and implement priorities weight limits and handle edge cases, preventing potential safety hazards, whilst delivering the intended service for users. 
 
  
 
@@ -101,7 +101,7 @@ Objectives:
 
 Implement two 3 different algorithms to deal with lift requests, Scan, Look, My Lift 
 
-Use an Queue data structure to manage incoming floor requests 
+Use a Queue data structure to manage incoming floor requests 
 
 Weight capacity to prohibit people being taken on all at once  
 
@@ -111,8 +111,260 @@ Charts generated for easy Comparision
 
  
 
+System overview: 
+
  
 
-Overview of scan algorithm 
+The lift control system works by checking floor for requests and if requests are valid and lift has space it takes on board that person them, it repeats those at every floor, Aswell on that floor they check if there are any requests in that lift for the floor , if so they are dropped off , this continues till everyone is on their floor. Using a queue system to handle requests  
 
-The algorithm uses lists to simulate the floors and uses nested loops to loop over floors of the building checking for pickups or drop offs the lift goes up and down and doesn't change direction, along with checks to handle the validity of requests such as invalid requests, if request is valid, it will check the capacity of lift if space available the person will be added to the lift. There are then checks within the lift to check if anyone needs to be dropped off at their floor originally it would drop them off even if they were at back of queue so to amend this, I have used pop [0] to ensure first in first out. My algorithm also prints out a message if this full this helped with de bug as was able to check if the lift ever filled up. 
+Key Goals: 
+
+Handle all requests  
+Minimise wait times  
+Compare efficiency of algorithms  
+Optimise movement 
+ 
+
+Algorithms: 
+
+Scan, Look, custom 
+
+ 
+
+Key Features: 
+
+Handle requests 
+
+Implement algorithms 
+
+Queue management  
+
+Capacity limit edge case handling 
+
+Track execution time   
+
+High level flow diagram: 
+
+ 
+
+Data Flow: 
+
+Requests are scheduled on each floor, no live requests, algorithm iterates over the floor adding the requests to lift in order (Queue, first in first Out), lift moves in accordance to how the type of algorithm dictates e.g. scan will only change direction if it reaches top or bottom of floors. Once moved then will carry out checks and if valid will pick up new request or if possible, will drop any current requests in the lift. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Specification: 
+
+Data Structures:  
+
+Queues: (FIFO), We implemented our queue's using pythons list, we treated them as queues by using/limiting the following operations. 
+
+To enqueue, we used the .append() operation and this already add to the back of list so didnt need to specify where to append element. 
+
+To deque, we used pop[0], pop removes element from the list and the 0 specifies the first element of that list which reflects the firsts in first out approach we were implementing. 
+
+ 
+
+Lists allowed for a good representation of the queue data type we are aware that they are not optimised for queues due to inefficacy however they met the standards need for this project due to simplicity of implementation. 
+
+ 
+
+Pseudo Code: 
+
+Scan: 
+
+Initialise the variable  
+Lift, all requests are empty lists, max capacity is found and read in input file  
+Start the time 
+
+Define Scan algorithm, this handles the requests  
+
+START SCAN 
+ 
+For floor in range(0, top_floor): 
+
+		if there is space in lift and requests isn't on correct floor  
+
+add them to lift  
+
+		if there are requests in lift that match the floor  
+
+drop them off at the floor  
+
+		if lift reaches max capacity  
+
+drop every one of at respective locations  
+
+	 
+
+ 
+
+For floor in range(top_floor, 0, -1) 
+
+		if there is space in lift and requests isnt on correct floor  
+
+add them to lift  
+
+		if there are requests in lift that match the floor  
+
+drop them off at the floor  
+
+		if lift reaches max capacity  
+
+drop every one of at respective locations 
+
+3) END OF SCAN 
+
+4)Display the final floors after processing  
+
+5)Return the total time 
+
+ 
+
+Assumptions: 
+
+No real time handling for requests, all our requests are pre-loaded beforehand, this doesn't accurately represent real world application as the same person who went to one floor may change their mind and want to go to another one after they have been there. 
+
+ 
+
+Lift capacity is only thought about in a sense of number of people on lift however in reality it's the weight of people that effect the limit as you may have 3 people of quiet heavy weight they whey the same as 6 people of lower weight meaning u would be exceeding limit in both scenarios ,if capacity was 6. 
+
+Floors are pre-determined, no dynamic changes can be made for changes in building configuration, although this doesn't seem like it has real world applications it could be considered in a sense of if people have access to certain floor or some are restricted then those people should have their own set amount of floors depending on access level. 
+
+limitations: 
+
+No implementation of priority cues means system cannot priorities certain passengers, for example if there are passengers who have been queuing of longer they should be dealt with first  
+
+Scan algorithm has its own personal limitation, the fact it only changes direction at the top and bottom means if it has an instance such as if it picks up a passenger at 5 who wants to go to 6  they have to wait till they go down to bottom then go back up to 6 this also takes up space in the capacity further impacting the efficiency of the algorithm. 
+
+ 
+
+Non addaptive schedulling, this is applicable in situations where we are dealing with live requests an example would be a rush in the amount of people requesting to go to or from certain floors, none of our algorithms use live requests thus making it efficient in these situations. 
+
+Lack of multi lift support mean all requests are funnel through one system whereas if you were to implement multiple lifts it would lead to less traffic which would increase the efficiency. You could even implement different algorithms on each lift to further increase the efficiency. 
+
+ 
+
+No Graphical user interface makes it harder to interact with the system Aswell as making it harder to debug and Analise. 
+
+ 
+
+Algorithm specifications: 
+
+Scan 
+
+The algorithm uses lists to simulate the floors and uses nested loops to loop over floors of the building checking for pickups or drop offs the lift goes up and down and doesn't change direction, along with checks to handle the validity of requests such as invalid requests, if request is valid, it will check the capacity of lift if space available the person will be added to the lift. There are then checks within the lift to check if anyone needs to be dropped off at their floor originally it would drop them off even if they were at back of queue so to amend this, I have used pop [0] to ensure first in first out. My algorithm also prints out a message if this full this helped with de bug as was able to check if the lift ever filled up. If the lift fills up it drops off all passenger to respective floors before resuming usual service. The lift can handle change of direction by loping down wards once it reaches top floor which is pre-defined when we set up our floors by reading an input txt file. Once all requests are handled it shows the final floors and returns the t time which is used for testing and analysis  
+
+Look: (cant do yet) 
+
+Lift: (cant do yet) 
+
+Results: 
+
+Scan: 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Group collaboration statement: 
+
+Task Description Recommended Perso Specification Document Writing the coursework specification, including requirements, objectives, assumptions, pseudocode, Generative AI statement, and system design. Sam, spell check + grammar Ted 
+
+Report Writing Dan 
+
+Algorithm Implementation (SCAN, LOOK, MYLIFT) Implementing at least two algorithms + one custom algorithms for optimization. Sam (Scan), ( Will(look)) + louis (our algorithm of choice) 
+
+Code for handling input, 
+
+Simulation & Testing Designing scenarios, constraints (lift capacity, travel time), running simulations, collecting data. Will 
+
+Results & Analysis Generating charts/graphs, comparing algorithm efficiency, interpreting results. Louis/ted 
+
+Video Presentation Creating slides, recording, and editing the video presentation (all members participate). Ted editing + script writing, all contribute 
+
+Final Documentation & Submission Compiling final PDF, structuring folders, writing README, ensuring all files are included. 1 person (final review & submission) 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+AI use declaration  
+
+Please edit this cell and fill the boxes accordingly. 
+
+AI-supported use is permitted in this assessment. I acknowledge the following uses of GenAI tools in this assessment: 
+
+[NO] I have used GenAI tools for developing ideas. 
+
+[NO] I have used GenAI tools to assist with research or gathering information. 
+
+[NO] I have used GenAI tools to help me understand key theories and concepts. 
+
+[NO] I have used GenAI tools to identify trends and themes as part of my data analysis. 
+
+[NO] I have used GenAI tools to suggest a plan or structure for my assessment. 
+
+[NO] I have used GenAI tools to give me feedback on a draft. 
+
+[NO] I have used GenAI tool to generate image, figures or diagrams. 
+
+[NO] I have used GenAI tools to proofread and correct grammar or spelling errors. 
+
+[NO] I have used GenAI tools to generate citations or references. 
+
+[NO] Other [please specify] 
+
+[NO] I have not used any GenAI tools in preparing this assessment. 
+
+[NO] I declare that I have referenced use of GenAI outputs within my assessment in line with the University referencing guidelines. 
+
+Please note that submitting your work without an accompanying declaration, or one with no ticked boxes, will be considered a declaration that you have not used GenAI tools in preparing your work. 
+
+ 
+
+Singed By: 
+
+Sam Taylor-King 
