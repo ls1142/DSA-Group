@@ -135,5 +135,3 @@ def scan_alg(floors, lift, max_capacity):
 
 # Run the function
 scan_alg(floors, lift, max_capacity)
-
-
