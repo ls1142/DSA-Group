@@ -1,5 +1,7 @@
 
 Discussison:(this is a section of documention buthas a lagre overlapp with report)
+-simulation scenarios(talk about what the testing / analysos runs)
+-perfomance metrics run the tests or ask will to nad talk about the results and compare them across the algorythms 
 
 Simulation Report: (inside the /results folder) – This likely contains extra details on test cases, data, and performance analysis
 
