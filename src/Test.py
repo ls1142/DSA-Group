@@ -30,10 +30,13 @@ def generateFileData(floors:int,people:int)->None:
     
     string = str(floors)+",1\n"
     for i in range(1,floors+1):
-        string = string + "\n" + str(i) + ":"
+        if len(data[i-1]) != 0:
+            string = string + "\n" + str(i) + ": "
+        else:
+            string = string + "\n" + str(i) + ":"
         for j in range(0,len(data[i-1])):
             if j != len(data[i-1])-1:
-                string = string + str(data[i-1][j])+","
+                string = string + str(data[i-1][j])+", "
             else:
                 string = string + str(data[i-1][j])
     
@@ -64,16 +67,15 @@ def generatePD(data: list, disc: int) -> list:
     return pd
 
 
-def test(testLength: int = 100, testFlors: int = 10, testPeople: int = 10, algorithm: callable = None):
+def test(testLength: int = 100, testFloors: int = 10, testPeople: int = 10, algorithm: callable = None):
     """Runs a test on the data, outputs and returns mean and standard deviation"""
     
     data = []
     for i in range(0,testLength):
-        randomData = generateData(testFlors,testPeople)
+        randomData = generateData(testFloors,testPeople)
         data.append(algorithm(randomData, [], 1))
 
 
-    #print(data)
     mean = means(data)
     sd = standarddevations(data, mean)
     print(f"average:{str(mean)}")
@@ -91,14 +93,14 @@ def test(testLength: int = 100, testFlors: int = 10, testPeople: int = 10, algor
 if __name__ == "__main__":
     SAMPLES = 500
     FLOORS = 100
-    PEOPLE = 10000
+    PEOPLE = 1000000
     
-    generateFileData(10,10)
+    #generateFileData(10,10)
     
     
     
     mean, sd, pd = test(SAMPLES,FLOORS,PEOPLE,scan_alg)
-    #mean2, sd2, pd2 = test(round(SAMPLES/5),FLOORS,round(PEOPLE/10))
+    #mean2, sd2, pd2 = test(round(SAMPLES/5),FLOORS,round(PEOPLE/10),scan_alg)
     x = np.arange(0,5,0.001)
     f = 1/sqrt(2*3.14159265359)*np.exp((-1/2)*((x-mean)/sd)**2)
     #f2 = 1/sqrt(2*3.14159265359)*np.exp((-1/2)*((x-mean2)/sd2)**2)
@@ -108,7 +110,7 @@ if __name__ == "__main__":
     fig, ax = plt.subplots()
     
     
-    #ax.plot(x,g,color='red',alpha=1.0)
+    ax.plot(x,g,color='red',alpha=1.0)
     #ax.plot(x,g2,color='green',alpha=1.0)
     
     
