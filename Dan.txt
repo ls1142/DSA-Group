@@ -1,1 +1,6 @@
 
+Discussison:(this is a section of documention buthas a lagre overlapp with report)
+
+Simulation Report: (inside the /results folder) – This likely contains extra details on test cases, data, and performance analysis
+
+README.md – A simple file explaining how to run your code.
