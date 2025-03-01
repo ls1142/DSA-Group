@@ -297,7 +297,8 @@ The algorithm uses lists to simulate the floors and uses nested loops to loop ov
 
 Look: william  
 
-Lift: (cant do yet) 
+C-Scan: the lift operates in cycles goes upwards picking up passengers and dropping them off at there floors if they are at front of the queue once it reaches the top of the floors it orders the list from lowest to highest's and starts back again from the bottom floor , this repeats till all requests are sorted.  
+
 
  
 
