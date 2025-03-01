@@ -1,5 +1,13 @@
 
+Test 50 completed successfully
+Mean: 0.1536846160888672, Standard Deviation: 0.0077134213973586675, Successful runs: 50/50
+
+
+
+
+
 Discussison:(this is a section of documention buthas a lagre overlapp with report)
+
 -simulation scenarios(talk about what the testing / analysos runs)
 -perfomance metrics run the tests or ask will to nad talk about the results and compare them across the algorythms 
 
