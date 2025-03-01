@@ -325,9 +325,13 @@ Our mean shows our scan algorithm performs well as most runs finishing within 1.
 The lift does not ensure all requests are completed optimally as some requests may be left unprocessed if they are not in the natural order of traversal. This is backed by the results shown by the high standard deviation showing that some runs take much longer than others due to the lack of priority queue.
  
 
- 
+C-Scan:
 
- 
+average: 0.1536846160888672
+
+standard Deviation 0.0077134213973586675
+
+Successful runs: 50/50
 
  
 
