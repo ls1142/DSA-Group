@@ -68,9 +68,9 @@ def people_in_lift_requests(current_floor, lift, top_floor): # checks if there a
     people_up = 0
     people_down = 0
     for requests in lift:
-        if requests > current_floor + 1:
+        if requests > current_floor:
             people_up += 1
-        elif requests < current_floor + 1:
+        elif requests < current_floor:
             people_down += 1
     if people_up > people_down:
         return True
@@ -187,7 +187,7 @@ def downLift(lift, all_requests, capacity, current_floor, completed, Up, top_flo
             if requests_completed(all_requests, top_floor) == True and len(lift) > 0: # if all requests have been completed but people still in lift
                 if people_in_lift_requests(current_floor, lift, top_floor) == False:
                     None
-                else: 
+                else:
                     Up = True
                     return lift, all_requests, current_floor, completed, Up
             elif requests_completed(all_requests, top_floor) == True and len(lift) == 0: 
@@ -221,4 +221,4 @@ def Lift(lift = [], all_requests = [], current_floor = 0, completed = False, Up 
     return (end_time - start_time) * 1000
 
 
-Lift(lift, all_requests, current_floor, completed, Up)
+print(Lift(lift, all_requests, current_floor, completed, Up))

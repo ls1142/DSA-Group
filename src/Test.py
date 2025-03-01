@@ -74,8 +74,7 @@ def test(testLength: int = 100, testFloors: int = 10, testPeople: int = 10, algo
     data = []
     for i in range(0,testLength):
         randomData = generateData(testFloors,testPeople)
-        data.append(algorithm(randomData, [], 1))
-
+        data.append(algorithm([], randomData, 1))
 
     mean = means(data)
     sd = standarddevations(data, mean)
