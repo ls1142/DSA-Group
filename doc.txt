@@ -322,7 +322,7 @@ From the results we can see that our algorithm successfully ran 50/50 times reas
 Our mean shows our scan algorithm performs well as most runs finishing within 1.26 seconds, however our standard deviation is 2.14 which is considerably larger, than the mean , which suggests there are runs which are taken noticeably longer than most, this is most likely due to edge cases however this suggests that the performance of the algorithm isn't very consistent. This is backed up by calculating the coefficient of variation which works out to be 172%*, this confirms high variability we suspected, this shows that our algorithm can be improved to handle edge cases and irregular floor layouts better.  
 
  
-
+The lift does not ensure all requests are completed optimally as some requests may be left unprocessed if they are not in the natural order of traversal. This is backed by the results shown by the high standard deviation showing that some runs take much longer than others due to the lack of priority queue.
  
 
  
