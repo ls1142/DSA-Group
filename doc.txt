@@ -325,18 +325,18 @@ Our mean shows our scan algorithm performs well as most runs finishing within 1.
  
 The lift does not ensure all requests are completed optimally as some requests may be left unprocessed if they are not in the natural order of traversal. This is backed by the results shown by the high standard deviation showing that some runs take much longer than others due to the lack of priority queue.
  
+C-Scan: 
 
-C-Scan:
+Test 50 completed successfully 
 
-average: 0.1536846160888672
+Mean: 0.22057533264160156, 
 
-standard Deviation 0.0077134213973586675
+Standard Deviation: 0.18989805212924368 
 
-Successful runs: 50/50
+Successful runs: 50/50 
 
- 
-The C-Scan results show that this algorithm is much more efficient than the other two algorithms as it has a smaller mean of only ~0.15s and a very small standard deviation, showing that all tests finish in a very similar time frame, suggesting that the use of priority queue has made the algorithm much more optimal.
- 
+  
+Our mean shows that the C-Scan algorithm runs well with most runs finishing in 0.22 seconds, our standard deviation is lower than the mean this indicates us that the algorithm is good at handling edge cases as most runs finish close to the mean showing there are no anomalies, however when we calculate the coefficient if variation we get 86% which shows high level of variability in execution time , this may be expected due to the circular nature of the algorithm as people who request high floors will have to go through every floor every time as the lift doesn't Travel downwards.  
 
  
 
@@ -345,6 +345,8 @@ The C-Scan results show that this algorithm is much more efficient than the othe
  
 
 Final Discussion: 
+
+The C-Scan results show that this algorithm is much more efficient than the other two algorithms as it has a smaller mean of only ~0.15s and a very small standard deviation, showing that all tests finish in a very similar time frame, suggesting that the use of priority queue has made the algorithm much more optimal.
 
  
 
