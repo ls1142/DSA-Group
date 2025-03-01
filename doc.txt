@@ -189,33 +189,33 @@ START SCAN
  
 For floor in range(0, top_floor): 
 
-		if there is space in lift and requests isn't on correct floor  
+if there is space in lift and requests isn't on correct floor  
 
 add them to lift  
 
-		if there are requests in lift that match the floor  
+if there are requests in lift that match the floor  
 
 drop them off at the floor  
 
-		if lift reaches max capacity  
+if lift reaches max capacity  
 
 drop every one of at respective locations  
 
-	 
+ 
 
  
 
 For floor in range(top_floor, 0, -1) 
 
-		if there is space in lift and requests isnt on correct floor  
+if there is space in lift and requests isnt on correct floor  
 
 add them to lift  
 
-		if there are requests in lift that match the floor  
+if there are requests in lift that match the floor  
 
 drop them off at the floor  
 
-		if lift reaches max capacity  
+if lift reaches max capacity  
 
 drop every one of at respective locations 
 
@@ -224,6 +224,40 @@ drop every one of at respective locations
 4)Display the final floors after processing  
 
 5)Return the total time 
+
+ 
+
+Look: 
+
+making_list_of_requests(list_type_of_requests): IF length of list_type_of_requests then join into a string strip spaces and new lines at end of string seperate each element by ", " for all requests in list_type_of_requests add them to a temp list when added all requests to the temp list add the list of requests to all_requests ELIF the length of list_type_of_requests is 1 then remove the value from list_type_of_requests and then add list_type_of_requests to all_requests ELIF the length of list_type_of_requests is 0 then add the list_type_of_requests to all_requests 
+
+isLiftFull(): IF the lifts capcity is equal to max return True ELSE return False 
+
+is_floor_empty(floor_request): IF length of floor_request is 0 return True ELSE return False 
+
+requests_completed(all_requests): FOR the requests in all_requests IF length of requests is 0 then add 1 onto floor completed starting from 0 IF floors_completed is equal to the floor of top floor then return True ELSE return False 
+
+change_direction(current_floor, Up): IF current_floor is the top floor and lift going up then return True ELIF current_floor is 0 and lift is going down then return True ELSE return False 
+
+leaving_lift(lift, current_floor): FOR people in lift IF request of person == current_floor add person to list of people leaving the lift FOR person in the list of people leaving remove person from lift return lift 
+
+requests_in_direction_complete(all_requests, current_floor, Up): IF lift going up the difference is the top floor - current_floor FOR floors between current_floor and top floor if the floor has no requests left then take 1 from difference ELIF lift going down the difference is the current_floor FOR floors between current_floor and bottom floor if the floor has no requests left then take 1 from difference IF the difference is 0 then return True ELSE return False 
+
+open the "input.txt" file and read it FOR each line in the file IF it is the first line in file then IF the characters are numbers then add them to a temp list amount_of_floors is first element of temp list capacity is second element of temp list ELIF there is a ":" in the line of file then index is the index of ":" in the line with each character being an element in a list IF the index is 1 then add first element of the line of file as a list in a temp list the floor is the first element of the temp list ELIF index larger than 1 then for all the characters between first character and ":" add to temp list then remove them from the line as a list IF the character is the one before ":" then remove the first element of the line as a list join the temp list together to get the floor number call making_list_of_requests function  
+
+upLift(): first check if any people need to get off at current floor check if all requests have been completed and if lift is empty if both true then stop is lift is full IF not then add people to lift until full or floor empty IF full go to next floor IF all the requests are finished but people still in list keep going in direction IF lift is at top floor change direction repeat until hit top floor or all requests completed 
+
+downLift(): first check if any people need to get off at current floor check if all requests have been completed and if lift is empty if both true then stop is lift is full IF not then add people to lift until full or floor empty IF full go to next floor IF all the requests are finished but people still in list keep going in direction IF lift is at top floor change direction repeat until hit bottom floor or all requests completed 
+
+repeat upLift and downLift until lift is empty and all requests have been completed 
+
+ 
+
+ 
+
+MYLIFT: 
+
+Cant do yet  
 
  
 
@@ -261,15 +295,31 @@ Scan
 
 The algorithm uses lists to simulate the floors and uses nested loops to loop over floors of the building checking for pickups or drop offs the lift goes up and down and doesn't change direction, along with checks to handle the validity of requests such as invalid requests, if request is valid, it will check the capacity of lift if space available the person will be added to the lift. There are then checks within the lift to check if anyone needs to be dropped off at their floor originally it would drop them off even if they were at back of queue so to amend this, I have used pop [0] to ensure first in first out. My algorithm also prints out a message if this full this helped with de bug as was able to check if the lift ever filled up. If the lift fills up it drops off all passenger to respective floors before resuming usual service. The lift can handle change of direction by loping down wards once it reaches top floor which is pre-defined when we set up our floors by reading an input txt file. Once all requests are handled it shows the final floors and returns the t time which is used for testing and analysis  
 
-Look: (cant do yet) 
+Look: william  
 
 Lift: (cant do yet) 
+
+ 
+
+ 
+
+ 
+
+ 
 
 Results: 
 
 Scan: 
 
- 
+average:1.2517690658569336 
+
+standardDevation:2.135727598216246 
+
+Successful runs: 50/50 
+
+From the results we can see that our algorithm successfully ran 50/50 times reassuring us that it operates as intended. 
+
+Our mean shows our scan algorithm performs well as most runs finishing within 1.26 seconds, however our standard deviation is 2.14 which is considerably larger, than the mean , which suggests there are runs which are taken noticeably longer than most, this is most likely due to edge cases however this suggests that the performance of the algorithm isn't very consistent. This is backed up by calculating the coefficient of variation which works out to be 172%*, this confirms high variability we suspected, this shows that our algorithm can be improved to handle edge cases and irregular floor layouts better.  
 
  
 
@@ -288,6 +338,8 @@ Scan:
  
 
  
+
+Final Discussion: 
 
  
 
