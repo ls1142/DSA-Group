@@ -335,7 +335,7 @@ standard Deviation 0.0077134213973586675
 Successful runs: 50/50
 
  
-
+The C-Scan results show that this algorithm is much more efficient than the other two algorithms as it has a smaller mean of only ~0.15s and a very small standard deviation, showing that all tests finish in a very similar time frame, suggesting that the use of priority queue has made the algorithm much more optimal.
  
 
  
