@@ -5,7 +5,7 @@ Module: ECM 1414
  
 Group Members and Student IDs: 
 Sam Taylor-King 740026903 
- 
+Ted Turner 740013195
  
  
  
@@ -417,6 +417,8 @@ Please note that submitting your work without an accompanying declaration, or on
 
  
 
-Singed By: 
+Signed By: 
 
 Sam Taylor-King 
+
+Ted Turner
