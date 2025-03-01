@@ -1,4 +1,5 @@
 from Scan import scan_alg
+from Look import Lift
 import random
 from math import sqrt
 import matplotlib.pyplot as plt
@@ -95,29 +96,27 @@ if __name__ == "__main__":
     FLOORS = 100
     PEOPLE = 1000000
     
-    #generateFileData(10,10)
+    generateFileData(10,10)
     
-    
-    
-    mean, sd, pd = test(SAMPLES,FLOORS,PEOPLE,scan_alg)
-    #mean2, sd2, pd2 = test(round(SAMPLES/5),FLOORS,round(PEOPLE/10),scan_alg)
-    x = np.arange(0,5,0.001)
-    f = 1/sqrt(2*3.14159265359)*np.exp((-1/2)*((x-mean)/sd)**2)
-    #f2 = 1/sqrt(2*3.14159265359)*np.exp((-1/2)*((x-mean2)/sd2)**2)
-    g = np.array(pd)
-    #g2 = np.array(pd2)
+    #mean, sd, pd = test(SAMPLES,FLOORS,PEOPLE,scan_alg)
+    mean2, sd2, pd2 = test(round(SAMPLES/5),FLOORS,round(PEOPLE/10),Lift())
+    #x = np.arange(0,5,0.001)
+    #f = 1/sqrt(2*3.14159265359)*np.exp((-1/2)*((x-mean)/sd)**2)
+    f2 = 1/sqrt(2*3.14159265359)*np.exp((-1/2)*((x-mean2)/sd2)**2)
+    #g = np.array(pd)
+    g2 = np.array(pd2)
 
     fig, ax = plt.subplots()
     
     
-    ax.plot(x,g,color='red',alpha=1.0)
-    #ax.plot(x,g2,color='green',alpha=1.0)
+    #ax.plot(x,g,color='red',alpha=1.0)
+    ax.plot(x,g2,color='green',alpha=1.0)
     
     
-    ax.plot(x,f,color='red',alpha=1.00,label="Scan")
-    #ax.plot(x,f2,color='green',alpha=1.00,label="Look(but not really)")
-    ax.fill_between(x,f,0,color='red',alpha=0.1)
-    #ax.fill_between(x,f2,0,color='green',alpha=0.1)
+    #ax.plot(x,f,color='red',alpha=1.00,label="Scan")
+    ax.plot(x,f2,color='green',alpha=1.00,label="Look(but not really)")
+    #ax.fill_between(x,f,0,color='red',alpha=0.1)
+    ax.fill_between(x,f2,0,color='green',alpha=0.1)
     plt.ylabel("Probability Density")
     plt.xlabel("Time(s)")
     plt.legend()
