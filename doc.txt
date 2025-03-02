@@ -338,9 +338,15 @@ Successful runs: 50/50
   
 Our mean shows that the C-Scan algorithm runs well with most runs finishing in 0.22 seconds, our standard deviation is lower than the mean this indicates us that the algorithm is good at handling edge cases as most runs finish close to the mean showing there are no anomalies, however when we calculate the coefficient if variation we get 86% which shows high level of variability in execution time , this may be expected due to the circular nature of the algorithm as people who request high floors will have to go through every floor every time as the lift doesn't Travel downwards.  
 
- 
+Look:
 
- 
+Successful runs 50/50
+
+mean: 5.2079
+
+Standard Deviation 1.05
+
+Our mean shows that, on average the look algorithm takes much longer to compute than our other two algorithms with a run time of 5.21 seconds, which is to be expected with the limitations of having to reach the top/bottom floor before being able to turn. The standard deviation being at 1.05 is significantly lower than that of the scan algorithm showing that it is likley more consistant, however there are still some anomalies and it is still much slower.
 
  
 
