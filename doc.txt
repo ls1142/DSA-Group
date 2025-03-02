@@ -7,7 +7,7 @@ Group Members and Student IDs:
 Sam Taylor-King 740026903 
 Ted Turner 740013195
 Dan Tamlyn 740062646
- 
+Qi Feng Wu 740065063
  
  
  
@@ -437,7 +437,9 @@ Please note that submitting your work without an accompanying declaration, or on
 
  
 
-Signed By: 
+Signed By:
+
+Qi Feng Wu
 
 Sam Taylor-King 
 
