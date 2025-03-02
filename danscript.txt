@@ -1,1 +1,20 @@
+Test results:
+
+Scan:
+Successful Runs: 50/50
+Mean Execution Time: 0.2512 seconds
+Standard Deviation: 0.251
+The scan algorithm has an average runtime of 0.25 seconds. However, its standard deviation of 0.251 suggests some inconsistency in performance, meaning that while it is generally fast, there were a few cases where it took longer than expected. A high standard deviation indicates that it struggles with edge cases, and the algorithm’s performance becomes less predictable under certain conditions.
+look:
+Successful Runs: 50/50
+Mean Execution Time: 5.2079 seconds
+Standard Deviation: 1.05
+The look algorithm performed significantly worse than scan, with an average execution time of 5.21 seconds. The high standard deviation of 1.05 indicates considerable variation in performance. This could be due to the extra overhead of deciding when to stop and turn. The high standard deviation suggests that the algorithm has difficulty handling edge cases, with performance varying significantly in different situations.
+c-scan:
+Successful Runs: 50/50
+Mean Execution Time: 0.1503 seconds
+Standard Deviation: 0.041
+C-scan proved to be the most efficient algorithm, with a mean execution time of 0.15 seconds and a low standard deviation of 0.041. The low standard deviation suggests consistent performance, especially in edge cases, where it handles varying request distributions more effectively.
+Comparing all three algorithms, c-scan outperforms the others in both speed and consistency. Scan is a reasonable alternative but shows more variation, which could affect reliability in some cases. Look, while theoretically advantageous, turned out to be the least efficient in these tests, with high performance variability.
+In environments requiring speed and predictability, c-scan is the best option, as its low standard deviation ensures stable performance even with edge cases.
 
