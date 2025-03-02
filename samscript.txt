@@ -1,5 +1,25 @@
 Scan:
-The Scan algorithm follows a structured approach. It initializes lift variables, iterates through floors handling pickups and drop-offs, changes direction at the top or bottom floor, and finally displays the results and total execution time. Some assumptions and limitations of our project include the absence of real-time request handling since all requests are preloaded. Capacity is based on the number of people rather than actual weight, and the system does not support dynamic floor configurations. There is no implementation of a priority queue, which means requests are not processed based on urgency. The system is designed for a single lift, which reduces efficiency.
+The Scan algorithm follows a structured approach. It initializes lift variables, iterates through floors handling pickups and drop-offs, changes direction at the top or 
+
+bottom floor, and finally displays the results and total execution time. Some assumptions and limitations of our project include the absence of real-time request handling 
+
+since all requests are preloaded. Capacity is based on the number of people rather than actual weight, and the system does not support dynamic floor configurations. 
+
+There is no implementation of a priority queue, which means requests are not processed based on urgency. The system is designed for a single lift, which reduces efficiency.
+
+
 Rundown of scan code:
 
-This script reads lift requests from an input file and processes them using the SCAN algorithm. It first initializes variables and reads the file, extracting the number of floors, lift capacity, and requests for each floor. The requests are stored in a list, where each index represents a floor and contains a queue of people waiting to be picked up. The scan_alg function simulates the lift’s movement, starting by iterating through floors in ascending order. At each floor, it drops off passengers who requested that floor and picks up new passengers if there is space in the lift. If the lift reaches full capacity, it forcefully drops off all passengers at their requested floors before continuing. After reaching the top floor, the lift moves downward, again dropping off and picking up passengers, but ensuring it does not re-pick up those who were already dropped off. The function prints out key events such as pickups, drop-offs, and the state of each floor before and after processing. Finally, it calculates and returns the execution time of the algorithm
+This script reads lift requests from an input file and processes them using the SCAN algorithm. It first initializes variables and reads the file, extracting the number of 
+
+floors, lift capacity, and requests for each floor. The requests are stored in a list, where each index represents a floor and contains a queue of people waiting to be 
+
+picked up. The scan_alg function simulates the lift’s movement, starting by iterating through floors in ascending order. At each floor, it drops off passengers who 
+
+requested that floor and picks up new passengers if there is space in the lift. If the lift reaches full capacity, it forcefully drops off all passengers at their requested
+
+floors before continuing. After reaching the top floor, the lift moves downward, again dropping off and picking up passengers, but ensuring it does not re-pick up those who 
+
+were already dropped off. The function prints out key events such as pickups, drop-offs, and the state of each floor before and after processing. Finally, it calculates and
+
+returns the execution time of the algorithm
