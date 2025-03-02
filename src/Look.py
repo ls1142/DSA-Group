@@ -43,7 +43,7 @@ def change_direction(current_floor, Up, top_floor): # checks to see if lift has 
 def leaving_lift(lift, current_floor): # takes people out the lift if their at the floor requested
     people_leaving = []
     for people in lift:
-        if people == current_floor:
+        if people - 1 == current_floor:
             people_leaving.append(people)
     for people in people_leaving:
         lift.remove(people)
@@ -68,9 +68,9 @@ def people_in_lift_requests(current_floor, lift, top_floor): # checks if there a
     people_up = 0
     people_down = 0
     for requests in lift:
-        if requests > current_floor:
+        if requests - 1 > current_floor:
             people_up += 1
-        elif requests < current_floor:
+        elif requests - 1 < current_floor:
             people_down += 1
     if people_up > people_down:
         return True
@@ -145,6 +145,7 @@ def upLift(lift, all_requests, capacity, current_floor, completed, Up, top_floor
                 if people_in_lift_requests(current_floor, lift, top_floor) == True:
                     None
                 else:
+                    print("h")
                     Up = False
                     return lift, all_requests, current_floor, completed, Up
             elif requests_completed(all_requests, top_floor) == True and len(lift) == 0: # checks if all requests have been completed
