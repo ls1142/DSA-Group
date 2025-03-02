@@ -159,9 +159,6 @@ def upLift(lift, all_requests, capacity, current_floor, top_floor, completed=Fal
             Up = False
             break
         else:
-            print(all_requests)
-            print(lift)
-            print(current_floor)
             current_floor += 1
 
     return lift, all_requests, current_floor, completed, Up
@@ -196,9 +193,6 @@ def downLift(lift, all_requests, capacity, current_floor, top_floor, completed=F
             Up = True
             break
         else:
-            print(all_requests)
-            print(lift)
-            print(current_floor)
             current_floor -= 1
 
     return lift, all_requests, current_floor, completed, Up

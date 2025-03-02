@@ -1,4 +1,4 @@
-from Scan6 import scan_alg
+#from Scan6 import scan_alg
 import random
 from math import sqrt
 import matplotlib.pyplot as plt
@@ -9,7 +9,7 @@ import signal
 # Define a timeout handler
 class TimeoutException(Exception):
     pass
-from Scan6 import scan_alg
+#from Scan6 import scan_alg
 from MYLIFT import hybrid_scan_algorithm
 from Look3 import Lift
 import random
@@ -54,7 +54,7 @@ def generateFileData(floors:int,people:int,floorIndex:int)->None:
                 string = string + str(data[i-1][j])+" , "
             else:
                 string = string + str(data[i-1][j])
-    with open("DSA-Group-main/GroupWorkD_A/input.txt", "w") as file:
+    with open("input.txt", "w") as file:
         file.write(string)
 
 def generateData(floors:int,people:int,floorIndex:int) -> list:
@@ -154,12 +154,12 @@ if __name__ == "__main__":
     print(f"Running analysis with {SAMPLES} samples, {FLOORS} floors, and {PEOPLE} people")
     print(f"Each run will timeout after {MAX_TIME_PER_RUN} seconds")
     
-    print("scan")
-    mean, sd, pd = test(SAMPLES, FLOORS, PEOPLE, scan_alg, max_time_per_run=MAX_TIME_PER_RUN)
+    #print("scan")
+    #mean, sd, pd = test(SAMPLES, FLOORS, PEOPLE, scan_alg, max_time_per_run=MAX_TIME_PER_RUN)
     print("look")
     mean, sd, pd = test(SAMPLES, FLOORS, PEOPLE, Lift, max_time_per_run=MAX_TIME_PER_RUN, floorIndex=1)
-    print("hybrid")
-    mean, sd, pd = test(SAMPLES, FLOORS, PEOPLE, hybrid_scan_algorithm, max_time_per_run=MAX_TIME_PER_RUN)
+    #print("hybrid")
+    #mean, sd, pd = test(SAMPLES, FLOORS, PEOPLE, hybrid_scan_algorithm, max_time_per_run=MAX_TIME_PER_RUN)
     
     if mean is None:
         print("Analysis failed - couldn't calculate statistics")
