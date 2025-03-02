@@ -310,43 +310,32 @@ C-Scan: the lift operates in cycles goes upwards picking up passengers and dropp
 
 Results: 
 
-Scan: 
+Scan 
 
-average:1.2517690658569336 
+Mean:8.04 
 
-standardDevation:2.135727598216246 
+SD:1.1 
 
-Successful runs: 50/50 
+The results from mean show us that the average test time was 8s , this is expected due to the nature of the algorithm due to it having to visit every floor and not being to change direction at top or bottom it has a standard deviation of 1.1,this tells us the algorithm is consistently handling cases well and is stable, the  variation coefficient is 13.7% which is good this backs up that the algorithm is good at handling edge cases. 
 
-From the results we can see that our algorithm successfully ran 50/50 times reassuring us that it operates as intended. 
+Look 
 
-Our mean shows our scan algorithm performs well as most runs finishing within 1.26 seconds, however our standard deviation is 2.14 which is considerably larger, than the mean , which suggests there are runs which are taken noticeably longer than most, this is most likely due to edge cases however this suggests that the performance of the algorithm isn't very consistent. This is backed up by calculating the coefficient of variation which works out to be 172%*, this confirms high variability we suspected, this shows that our algorithm can be improved to handle edge cases and irregular floor layouts better.  
+Mean:5.2079 
 
  
-The lift does not ensure all requests are completed optimally as some requests may be left unprocessed if they are not in the natural order of traversal. This is backed by the results shown by the high standard deviation showing that some runs take much longer than others due to the lack of priority queue.
+SD:1.05 
+
+We have an average test run time of 5.2s, for an algorithm for look this is normally as it will perform more efficiently as it will be able to complete requests quicker due to dynamic change in direction.Standered deviation for this algorithm was 1.05, showing that it's a stable algorithm and has a relatively consistent time to complete the test, allowing us to interpret that its able to handle edge cases with relative ease. The coefficient of variation is 20.2%further backing up our thoughts.  
+
+C-scan  
+
+Mean:1.47 
+
+SD:1.96 
+
+1.96s average shows how efficient the algorithm is this is due to the nature of C-Scan , the sorting queue means that no one that can be dropped off is ever waiting too long to be dropped off as once they get to their floor there shouldn't be anyone Infront of them as queue is ordered lowest to highest. However the Standard deviation is 1.96 which is higher than the mean this shows its rely inefficient when. Handling edge cases, the coefficient if variation of 133.33% confirms this. The reults suggest the algorith is susceptible to certain workload layouts ,this is clear from the nature of the algorithm as if u were to have high numbers at bottom and the list doesn't get sorted till it reaches top then due to queueing system it will block requests from being fulfilled. 
+
  
-C-Scan: 
-
-Test 50 completed successfully 
-
-Mean: 0.22057533264160156, 
-
-Standard Deviation: 0.18989805212924368 
-
-Successful runs: 50/50 
-
-  
-Our mean shows that the C-Scan algorithm runs well with most runs finishing in 0.22 seconds, our standard deviation is lower than the mean this indicates us that the algorithm is good at handling edge cases as most runs finish close to the mean showing there are no anomalies, however when we calculate the coefficient if variation we get 86% which shows high level of variability in execution time , this may be expected due to the circular nature of the algorithm as people who request high floors will have to go through every floor every time as the lift doesn't Travel downwards.  
-
-Look:
-
-Successful runs 50/50
-
-mean: 5.2079
-
-Standard Deviation 1.05
-
-Our mean shows that, on average the look algorithm takes much longer to compute than our other two algorithms with a run time of 5.21 seconds, which is to be expected with the limitations of having to reach the top/bottom floor before being able to turn. The standard deviation being at 1.05 is significantly lower than that of the scan algorithm showing that it is likley more consistant, however there are still some anomalies and it is still much slower.
 
  
 
