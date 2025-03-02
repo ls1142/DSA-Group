@@ -166,6 +166,9 @@ def upLift(lift, all_requests, current_floor, completed=False, Up=True):  # lift
             Up = False
             break
         else:
+            print(all_requests)
+            print(lift)
+            print(current_floor)
             current_floor += 1
 
     return lift, all_requests, current_floor, completed, Up
@@ -200,6 +203,9 @@ def downLift(lift, all_requests, current_floor, completed=False, Up=True):
             Up = True
             break
         else:
+            print(all_requests)
+            print(lift)
+            print(current_floor)
             current_floor -= 1
 
     return lift, all_requests, current_floor, completed, Up
@@ -227,3 +233,5 @@ def Lift(lift, all_requests, current_floor, completed=False, Up=True):
 
     end_time = time.time()
     return (end_time - start_time) * 1000  # Return time taken in milliseconds
+
+print(Lift(lift, all_requests, current_floor))
