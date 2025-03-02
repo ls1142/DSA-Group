@@ -96,7 +96,7 @@ def read_file(top_floor):
         for line in file:
             line_in_file += 1
             if line_in_file == 1:
-                for characters in line.strip().split(","): 
+                for characters in line.strip().split(", "): 
                     if characters.isnumeric(): # gets rid of all the characters in the line except for numbers
                         temp_list.append(int(characters)) # adds them as integers to a different list
                 amount_of_floors = temp_list[0]
@@ -145,7 +145,6 @@ def upLift(lift, all_requests, capacity, current_floor, completed, Up, top_floor
                 if people_in_lift_requests(current_floor, lift, top_floor) == True:
                     None
                 else:
-                    print("h")
                     Up = False
                     return lift, all_requests, current_floor, completed, Up
             elif requests_completed(all_requests, top_floor) == True and len(lift) == 0: # checks if all requests have been completed

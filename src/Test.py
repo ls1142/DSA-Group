@@ -1,5 +1,5 @@
 from Scan import scan_alg
-from Look import Lift
+from look3 import Lift
 import random
 from math import sqrt
 import matplotlib.pyplot as plt
