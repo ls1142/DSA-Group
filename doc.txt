@@ -295,7 +295,9 @@ Scan
 
 The algorithm uses lists to simulate the floors and uses nested loops to loop over floors of the building checking for pickups or drop offs the lift goes up and down and doesn't change direction, along with checks to handle the validity of requests such as invalid requests, if request is valid, it will check the capacity of lift if space available the person will be added to the lift. There are then checks within the lift to check if anyone needs to be dropped off at their floor originally it would drop them off even if they were at back of queue so to amend this, I have used pop [0] to ensure first in first out. My algorithm also prints out a message if this full this helped with de bug as was able to check if the lift ever filled up. If the lift fills up it drops off all passenger to respective floors before resuming usual service. The lift can handle change of direction by loping down wards once it reaches top floor which is pre-defined when we set up our floors by reading an input txt file. Once all requests are handled it shows the final floors and returns the t time which is used for testing and analysis  
 
-Look: william  
+Look: 
+
+This algorithm also uses lists to simulate the floors and nested loops to loop to each floor of the bulding. The algorithm will try to drop off individuals who want to get off at the floor the lift is currently at and then allow for people to get on until the lift is at it's maximum capacity of people (no weight limit). Unlike the scan algorithm, when all the requests in the direction the lift is travelling in are finished AND the lift is empty it will then change the direction of the lift since people may want to get off at the floors that have no more requests. The algorithm only returns the time taken.
 
 C-Scan: the lift operates in cycles goes upwards picking up passengers and dropping them off at there floors if they are at front of the queue once it reaches the top of the floors it orders the list from lowest to highest's and starts back again from the bottom floor , this repeats till all requests are sorted.  
 
