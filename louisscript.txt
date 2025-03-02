@@ -1,1 +1,4 @@
+Testing:
+
+Our testing script is designed to simulate real-world elevator conditions and measure the algorithms’ performance. It generates random floor requests for a set number of floors and passengers, then writes this data to an input file. The algorithm processes these requests, and we track execution time to evaluate efficiency. By running multiple test cycles with different parameters, we collect data on average response times and standard deviations, allowing us to analyse performance trends. The results are then visualized using probability density functions, helping us compare the algorithm’s effectiveness against traditional elevator scheduling methods.
 
