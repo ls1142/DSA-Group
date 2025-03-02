@@ -307,7 +307,6 @@ C-Scan: the lift operates in cycles goes upwards picking up passengers and dropp
  
 
  
-
 Results: 
 
 Scan 
@@ -337,6 +336,7 @@ SD:1.96
 
  
 
+ 
  
 
 Final Discussion: 
