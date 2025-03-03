@@ -100,7 +100,7 @@ def read_file(top_floor):
             temp_list = []
             line_in_file += 1
             if line_in_file == 1:
-                for characters in line.strip().split(","): 
+                for characters in line.strip().split(", "): 
                     if characters.isnumeric(): # gets rid of all the characters in the line except for numbers
                         temp_list.append(int(characters)) # adds them as integers to a different list
                 amount_of_floors = temp_list[0]
