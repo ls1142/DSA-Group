@@ -1,4 +1,4 @@
-#from Scan6 import scan_alg
+from Scan6 import scan_alg
 import random
 from math import sqrt
 import matplotlib.pyplot as plt
@@ -9,7 +9,7 @@ import signal
 # Define a timeout handler
 class TimeoutException(Exception):
     pass
-#from Scan6 import scan_alg
+from Scan6 import scan_alg
 from MYLIFT import hybrid_scan_algorithm
 from Look3 import Lift
 import random
@@ -98,7 +98,7 @@ def run_with_timeout(func, args=(), kwargs={}, timeout_duration=60):
         print(f"Exception occurred: {e}")
         return None, False
 
-def test(testLength: int = 100, testFlors: int = 10, testPeople: int = 10, algorithm: callable = None, max_time_per_run=60, floorIndex: int = 0):
+def test(testLength: int = 100, testFlors: int = 10, testPeople: int = 10, algorithm: callable = None, max_time_per_run=60, floorIndex: int = 1):
     """Runs a test on the data, outputs and returns mean and standard deviation"""
     data = []
     successful_runs = 0

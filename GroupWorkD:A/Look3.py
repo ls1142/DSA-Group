@@ -22,14 +22,14 @@ def making_list_of_requests(list_type_of_requests):
     return all_requests
 
 
-def isLiftFull(people_in_lift, capacity):
+def isLiftFull(people_in_lift, capacity): # to check if lift is full
     if people_in_lift == capacity:
         return True
     else:
         return False
 
 
-def is_floor_empty(floor_request):
+def is_floor_empty(floor_request): # to check is a floor is empty
     if len(floor_request) == 0:
         return True
     else:
@@ -42,7 +42,7 @@ def requests_completed(all_requests, top_floor):  # checks to see if there are n
         if len(requests) == 0:
             floors_completed += 1
     if floors_completed == top_floor:
-        print("All requests completed.")  # Debugging: Check if all requests are completed
+        print("All requests completed.")
         return True
     else:
         return False
@@ -50,10 +50,10 @@ def requests_completed(all_requests, top_floor):  # checks to see if there are n
 
 def change_direction(current_floor, Up, top_floor):  # checks to see if lift has hit bottom or top floor
     if (current_floor == top_floor - 1) and Up == True:
-        print("Reached top floor. Changing direction to down.")  # Debugging
+        print("Reached top floor. Changing direction to down.")
         return True
     elif (current_floor == 0) and Up == False:
-        print("Reached bottom floor. Changing direction to up.")  # Debugging
+        print("Reached bottom floor. Changing direction to up.")
         return True
     else:
         return False
@@ -126,21 +126,17 @@ def read_file(top_floor):
                             if floor > top_floor:
                                 top_floor = floor
                 all_requests = making_list_of_requests(list_type_of_requests) # processes requests
-        print(all_requests)
         return all_requests, capacity, amount_of_floors, top_floor
 
 def upLift(lift, all_requests, capacity, current_floor, top_floor, completed=False, Up=True):  # lift going up
-    print(current_floor)
-    print(top_floor)
     for floor in range(current_floor, top_floor):  # goes through all floors between current floor and top floor
-        print(f"Processing floor {floor}...")  # Debugging
+        print(f"Processing floor {floor}...")
         leaving_lift(lift, current_floor)  # takes people out lift if the floor is the one they requested
         if requests_completed(all_requests, top_floor) == True and len(lift) == 0:
             completed = True
             break
-        # Add people to lift if space allows
         people_added = []
-        for people in all_requests[floor]:
+        for people in all_requests[floor]: # Add people to lift if space allows
             if not isLiftFull(len(lift), capacity):
                 lift.append(people)
                 people_added.append(people)
@@ -150,12 +146,12 @@ def upLift(lift, all_requests, capacity, current_floor, top_floor, completed=Fal
         for people in people_added:
             all_requests[floor].remove(people)
 
-        if requests_in_direction_complete(all_requests, current_floor, Up, top_floor):
+        if requests_in_direction_complete(all_requests, current_floor, Up, top_floor): # checks to see if all floors above lift have no more requests
             if requests_completed(all_requests, top_floor) and len(lift) == 0:
                 completed = True
                 break
 
-        if change_direction(current_floor, Up, top_floor):
+        if change_direction(current_floor, Up, top_floor): # checks to see if lift is at top floor 
             Up = False
             break
         else:
@@ -167,15 +163,14 @@ def upLift(lift, all_requests, capacity, current_floor, top_floor, completed=Fal
 def downLift(lift, all_requests, capacity, current_floor, top_floor, completed=False, Up=False):
     Up = False
     for floor in range(current_floor, -1, -1):  # moves from current down to 0 floor
-        print(f"Processing floor {floor}...")  # Debugging
+        print(f"Processing floor {floor}...")
         leaving_lift(lift, current_floor)  # takes people out lift if the floor is the one they requested
         if requests_completed(all_requests, top_floor) == True and len(lift) == 0:  # checks if all requests have been completed
             completed = True
             break
-        # Add people to lift if space allows
         people_added = []
         for people in all_requests[floor]:
-            if not isLiftFull(len(lift), capacity):
+            if not isLiftFull(len(lift), capacity): # Add people to lift if space allows
                 lift.append(people)
                 people_added.append(people)
             elif isLiftFull(len(lift), capacity):
@@ -184,12 +179,12 @@ def downLift(lift, all_requests, capacity, current_floor, top_floor, completed=F
         for people in people_added:
             all_requests[floor].remove(people)
 
-        if requests_in_direction_complete(all_requests, current_floor, Up, top_floor):
+        if requests_in_direction_complete(all_requests, current_floor, Up, top_floor): # checks to see if all floors below lift have no more requests
             if requests_completed(all_requests, top_floor) and len(lift) == 0:
                 completed = True
                 break
 
-        if change_direction(current_floor, Up, top_floor):
+        if change_direction(current_floor, Up, top_floor): # checks if lift hits bottom 
             Up = True
             break
         else:
@@ -202,7 +197,7 @@ def Lift(lift = [], all_requests = [], current_floor = 0, completed=False, Up=Tr
     start_time = time.time()  # Start the timer to calculate time taken for the operation
     all_requests, capacity, amount_of_floors, top_floor = read_file(0)
     while completed == False:
-        print(f"Current floor: {current_floor + 1}, Lift: {lift}, Direction: {'Up' if Up else 'Down'}")  # Debugging
+        print(f"Current floor: {current_floor + 1}, Lift: {lift}, Direction: {'Up' if Up else 'Down'}")
         if Up == True:
             lift, all_requests, current_floor, completed, Up = upLift(lift, all_requests, capacity, current_floor, top_floor, completed, Up)
         elif Up == False:
@@ -210,4 +205,4 @@ def Lift(lift = [], all_requests = [], current_floor = 0, completed=False, Up=Tr
     end_time = time.time()
     return (end_time - start_time) * 1000  # Return time taken in milliseconds
 
-print(Lift(lift, all_requests, current_floor))
+Lift(lift, all_requests, current_floor)

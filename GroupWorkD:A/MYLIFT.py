@@ -153,10 +153,10 @@ def hybrid_scan_algorithm(floors, max_capacity, top_floor):
     return execution_time
 
 # Set max capacity from input
-max_capacity = capacity if capacity > 0 else 4  # default to 4 if not specified
+#max_capacity = capacity if capacity > 0 else 4  # default to 4 if not specified
 
 # Create a copy of all_requests for the algorithm to use
-floors_copy = [floor.copy() for floor in all_requests]
+#floors_copy = [floor.copy() for floor in all_requests]
 
 # Run the hybrid algorithm
-hybrid_scan_algorithm(floors_copy, max_capacity, top_floor)
+#hybrid_scan_algorithm(floors_copy, max_capacity, top_floor)

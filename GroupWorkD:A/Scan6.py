@@ -145,4 +145,4 @@ def scan_alg(floors, lift, max_capacity):
     return (end_time - start_time) * 1000
     
 # Run the function
-scan_alg(floors, lift, max_capacity)
+print(scan_alg(floors, lift, max_capacity))
